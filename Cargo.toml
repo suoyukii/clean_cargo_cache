@@ -1,0 +1,17 @@
+[package]
+name = "clean_cargo_cache"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[profile.release]
+# 设置优化级别为 "s" (对应 -Os)
+# 可选值: 0, 1, 2, 3, "s", "z"
+opt-level = "s"
+
+# 其他配合减小体积的常用配置
+lto = true          # 启用链接时优化，进一步减小体积并提升性能
+codegen-units = 1   # 减少代码生成单元，允许跨模块优化
+panic = "abort"     # 遇到 panic 时直接中止，移除栈展开信息，显著减小体积
+strip = "symbols"   # 移除符号表信息，减小最终二进制文件大小

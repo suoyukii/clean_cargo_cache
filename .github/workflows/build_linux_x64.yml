@@ -23,4 +23,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: linux-x64-release
-          path: target/x86_64-unknown-linux-gnu/release/
+          path: |
+            target/x86_64-unknown-linux-gnu/release/*
+            !target/x86_64-unknown-linux-gnu/release/*.d
+            !target/x86_64-unknown-linux-gnu/release/build/**
+            !target/x86_64-unknown-linux-gnu/release/deps/**
+            !target/x86_64-unknown-linux-gnu/release/.fingerprint/**
